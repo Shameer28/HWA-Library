@@ -103,6 +103,17 @@
         #legend {
             font-style: italic;
         }
+
+        option {
+            width: 40px;
+
+        }
+
+        section.img1 {
+            padding: 1rem;
+            width: 70%;
+            margin-left: 15%;
+        }
     </style>
 </head>
 
@@ -125,11 +136,16 @@
             </div>
 
             <div>
+
+        </section>
+
+        <section class="container1">
+            <div id="row1" class="row">
                 <div class="row">
                     <img class="col-12" src="library.jpeg" alt="Library Photo" width="100%">
                 </div>
+            </div>
         </section>
-
 
     </header>
 
@@ -151,18 +167,16 @@
                 <form id="libform" method="POST" action="">
                     <fieldset>
                         <legend id="legend">Libraries</legend>
-                        <ul>
-                            <li>
-                                <label id="name1" for="name">Select a library</label>
-                                <select id="name">
-                                    <option></option>
-                                    <option value="birch">Birch Library</option>
-                                </select>
-                            </li>
-                        </ul>
 
-                        <button class="button" type="button">Submit</button>
+                        <label id="name1" for="name">Select a library</label>
+                        <select id="name">
+                            <option></option>
+                            <option value="birch">Birch Library</option>
+                        </select>
+
                     </fieldset>
+                    <button class="button" type="button">Submit</button>
+
             </div>
             </div>
         </section>
