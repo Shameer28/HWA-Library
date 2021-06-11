@@ -27,32 +27,32 @@ public class LibraryController {
 	}
 	
 	
-	@PostMapping("/create") // CREATE
+	@PostMapping("/library/create") // CREATE
 	public Library saveLibrary(@RequestBody Library library) {
 		return this.service.saveLibrary(library);
 	}
 	
 	
-	@GetMapping("/") // READ
+	@GetMapping("/library") // READ
 	public List<Library> readAll() {
 		return this.service.readAll();
 	}
 	
 	
-	@GetMapping("/findId/{id}")
+	@GetMapping("/library/findId/{libID}")
 	public Library findLibrary(@PathVariable Integer libID) {
 		return this.service.findLibrary(libID);
 	}
 	
 	
-	@PutMapping("/update/{id}") // UPDATE
+	@PutMapping("/library/update/{libID}") // UPDATE
 	public Library updateLibrary(@PathVariable Integer libID, @RequestBody Library library) {
 		this.service.findLibrary(libID);
 		return this.service.updateLibrary(libID, library);
 	}
 	
 	
-	@DeleteMapping("delete/{id}") // DELETE
+	@DeleteMapping("/library/remove/{libID}") // DELETE
 	public boolean deleteLibrary(@PathVariable Integer libID) {
 		return this.service.deleteLibrary(libID);
 	}
