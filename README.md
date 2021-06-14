@@ -2,6 +2,7 @@
 
 This is a HTML/Javascript Library Website incorporated with a Java backend that an end user can interact with via a website(HTML pages).
 It utilises a MySQL database via a cloud platform instance containing the following entities/tables:
+
 - Library
 - Books
 
@@ -57,7 +58,7 @@ A step by step series of examples that tell you how to get a development running
 - Use GitBash to clone a copy of this project to your local machine
 *Use code: git clone {input repo url}*  
 
-- Then deploy the Eclipse IDE install spring boot in youir eclipse from market place. Import the project by going to File and import and selecting 'Existing Maven Project'.
+- Then deploy the Eclipse IDE install spring boot in youir eclipse from market place. Import the project by going to File and import and selecting 'Existing Project'.
 
 - Connect your MySQL database with the application via the 'application.properties' file located in the src/main/resource/java folder.
 
@@ -65,18 +66,19 @@ A step by step series of examples that tell you how to get a development running
 
 ## Running the tests
 - For test purpose you can utilise the depencies already available in the pom.xml file
-- For project JUnit+Mockito were used along with SonarQube.
+- For this project Selenium, JUnit and Mockito were used along with SonarQube.
 
 
 ## Intregration 
 - Jira CI Project Management Tool:
-https://team-1619528824712.atlassian.net/jira/software/projects/IM/boards/4
+https://team-1619528824712.atlassian.net/jira/software/projects/HWD/boards/5
 *Need to Request access before using 
 
 
 ## Built With
-* [JUnit](https://mvnrepository.com/artifact/junit/junit/) - Dependency Management
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [JUnit](https://mvnrepository.com/artifact/junit/junit/) - Dependency
+* [Maven](https://maven.apache.org/) - Dependency
+* [Selenium](https://chromedriver.storage.googleapis.com/index.html)- Web Driver/Dependency
 
 ## Versioning
 
@@ -95,5 +97,5 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * QA Community
-* Edsel Tham, Jordan Harrison
+* Edsel Tham, Jordan Harrison, Alan Davis
 
