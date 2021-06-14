@@ -71,14 +71,14 @@ A step by step series of examples that tell you how to get a development running
 
 ## Intregration 
 - Jira CI Project Management Tool:
-https://team-1619528824712.atlassian.net/jira/software/projects/HWD/boards/5
+https://team-1619528824712.atlassian.net/jira/software/projects/HWA/boards/5
 *Need to Request access before using 
 
 
 ## Built With
 * [JUnit](https://mvnrepository.com/artifact/junit/junit/) - Dependency
 * [Maven](https://maven.apache.org/) - Dependency
-* [Selenium](https://chromedriver.storage.googleapis.com/index.html)- Web Driver/Dependency
+* [Selenium](https://chromedriver.storage.googleapis.com/index.html)- Google Chrome Web Driver/Dependency
 
 ## Versioning
 
