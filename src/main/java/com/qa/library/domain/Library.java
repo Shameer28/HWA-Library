@@ -44,6 +44,14 @@ public class Library {
 		this.name = name;
 	}
 
+	public List<Books> getBook() {
+		return book;
+	}
+
+	public void setBook(List<Books> book) {
+		this.book = book;
+	}
+
 		
 	
 }
