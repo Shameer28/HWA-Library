@@ -34,6 +34,7 @@ const renderBooks = ({ bookID, name, author }) => {
     cardFooter.className = "card-footer";
     card.appendChild(cardFooter);
 
+    // Delete Functionality
     const deleteButton = document.createElement("a");
     deleteButton.innerText = "Delete";
     deleteButton.className = "card-link";
@@ -42,6 +43,7 @@ const renderBooks = ({ bookID, name, author }) => {
     });
     cardFooter.appendChild(deleteButton);
 
+    // Update Functionality
     const updateButton = document.createElement("a");
     updateButton.innerText = "Update";
     updateButton.className = "card-link";
@@ -69,25 +71,22 @@ const renderBooks = ({ bookID, name, author }) => {
         });
 
 
-
-
-        // removeBooks(bookID);
-
     });
     cardFooter.appendChild(updateButton);
 
     output.appendChild(column);
 }
+
+// Delete Functionality
 const removeBooks = async (bookID) => {
     const res = await axios.delete(`/books/remove/${bookID}`);
     readAll();
 }
 
+// Create Functionality
 document.getElementById("libform").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    console.log(this.name.value);
-    console.log(this.author.value);
 
     const book = {
         name: this.name.value,
