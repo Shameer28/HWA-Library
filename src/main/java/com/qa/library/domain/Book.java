@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Books {
+public class Book {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY) //AUTO INCREMENT
@@ -17,7 +17,8 @@ public class Books {
 	@Column
 	private String name;
 	
-	@Column String author;
+	@Column 
+	private String author;
 	
 	@ManyToOne
 	private Library library;
@@ -26,18 +27,18 @@ public class Books {
 	
 	@Override
 	public String toString() {
-		return "Books [bookID= " + bookID + ", name= " + name + ", author= " + author + ", library= " + library + "]";
+		return "Book [bookID= " + bookID + ", name= " + name + ", author= " + author + ", library= " + library + "]";
 	}
 	
 	
 	//	CONSTRUCTOR CRUD
-	public Books() {
+	public Book() {
 		super();
 	}
 	
 	
 	//	CONSTRUCTOR
-	public Books(String name, String author, Library library) {
+	public Book(String name, String author, Library library) {
 		super();
 		this.name = name;
 		this.author = author;
@@ -46,7 +47,7 @@ public class Books {
 
 	
 	//	CONSTRUCTOR
-	public Books(Integer bookID, String name, String author, Library library) {
+	public Book(Integer bookID, String name, String author, Library library) {
 		super();
 		this.bookID = bookID;
 		this.name = name;
@@ -109,7 +110,7 @@ public class Books {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Books other = (Books) obj;
+		Book other = (Book) obj;
 		if (author == null) {
 			if (other.author != null)
 				return false;
