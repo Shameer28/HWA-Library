@@ -14,6 +14,12 @@ import com.qa.library.dto.LibraryDTO;
 public class LibraryMapper implements Mapper<Library, LibraryDTO>  {
 
 	private BooksMapper booksMapper;
+	
+	//CONSTRUCTOR
+	public LibraryMapper(BooksMapper booksMapper) {
+		super();
+		this.booksMapper = booksMapper;
+	}
 
 	@Override
 	public LibraryDTO mapToDTO(Library entity) {
