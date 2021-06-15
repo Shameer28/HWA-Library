@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.library.domain.Books;
+import com.qa.library.domain.Book;
 import com.qa.library.dto.BooksDTO;
 import com.qa.library.service.BooksService;
 
@@ -28,8 +28,8 @@ public class BooksController {
 	
 	
 	@PostMapping("/books/create") // CREATE
-	public BooksDTO savebook(@RequestBody Books books) {
-		return this.service.saveBook(books);
+	public BooksDTO savebook(@RequestBody Book book) {
+		return this.service.saveBook(book);
 	}
 	
 	
@@ -46,8 +46,8 @@ public class BooksController {
 	
 	
 	@PutMapping("/books/update/{bookID}") // UPDATE
-	public BooksDTO updateBook(@PathVariable Integer bookID, @RequestBody Books books) {
-		return this.service.updateBook(bookID, books);
+	public BooksDTO updateBook(@PathVariable Integer bookID, @RequestBody Book book) {
+		return this.service.updateBook(bookID, book);
 	}
 	
 	

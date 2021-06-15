@@ -9,7 +9,7 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.library.domain.Books;
+import com.qa.library.domain.Book;
 import com.qa.library.dto.BooksDTO;
 import com.qa.library.repo.BooksRepo;
 import com.qa.library.utils.BooksMapper;
@@ -31,8 +31,8 @@ public class BooksService {
 	
 	
 	// FUNCTION TO CREATE BOOKS
-	public BooksDTO saveBook(Books books) {
-		Books saved = this.repo.save(books);
+	public BooksDTO saveBook(Book book) {
+		Book saved = this.repo.save(book);
 		return this.mapper.mapToDTO(saved);
 		
 	}
@@ -40,12 +40,12 @@ public class BooksService {
 
 	// FUNCTION TO READ ALL BOOKS
 	public List<BooksDTO> readAll() {
-		List<Books> books = this.repo.findAll();
+		List<Book> bookCollection = this.repo.findAll();
 		List<BooksDTO> dtos = new ArrayList<>();
 		
 		BooksDTO dto = null;
-		for (Books book : books) {
-			dto = this.mapper.mapToDTO(book);
+		for (Book book1 : bookCollection) {
+			dto = this.mapper.mapToDTO(book1);
 			dtos.add(dto);
 		}
 		return dtos;
@@ -54,20 +54,20 @@ public class BooksService {
 	
 	//	FUNCTION TO FIND BY ID
 	public BooksDTO findBook(Integer bookID) {
-		Optional<Books> optionalBook = this.repo.findById(bookID);
-		Books found =  optionalBook.orElseThrow(() -> new EntityNotFoundException());
+		Optional<Book> optionalBook = this.repo.findById(bookID);
+		Book found =  optionalBook.orElseThrow(() -> new EntityNotFoundException());
 			return this.mapper.mapToDTO(found);			
 	}
 	
 	//	FUNCTION UPDATE BOOKS
-	public BooksDTO updateBook(Integer bookID, Books books) {
-		Books exists = this.repo.findById(bookID).orElseThrow(() -> new EntityNotFoundException()); //  GETS EXISTING DATA
+	public BooksDTO updateBook(Integer bookID, Book book) {
+		Book exists = this.repo.findById(bookID).orElseThrow(() -> new EntityNotFoundException()); //  GETS EXISTING DATA
 		
-		exists.setName(books.getName()); // UPDATES EXISTING DATA
-		exists.setAuthor(books.getAuthor());
+		exists.setName(book.getName()); // UPDATES EXISTING DATA
+		exists.setAuthor(book.getAuthor());
 		
 		
-		Books updated = this.repo.save(exists); // UPDATES EXISTING DATA
+		Book updated = this.repo.save(exists); // UPDATES EXISTING DATA
 		
 		return this.mapper.mapToDTO(updated); // RETURNS THE UPDATED DATA
 	}

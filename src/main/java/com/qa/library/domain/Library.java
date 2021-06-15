@@ -1,5 +1,6 @@
 package com.qa.library.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -23,8 +22,8 @@ public class Library {
 	private String name;
 	
 	@OneToMany(mappedBy = "library")
-	@JsonIgnore
-	private List<Books> book;
+	
+	private List<Book> book = new ArrayList<>();;
 	
 
 	//	GETTERS & SETTERS
@@ -44,11 +43,11 @@ public class Library {
 		this.name = name;
 	}
 
-	public List<Books> getBook() {
+	public List<Book> getBook() {
 		return book;
 	}
 
-	public void setBook(List<Books> book) {
+	public void setBook(List<Book> book) {
 		this.book = book;
 	}
 

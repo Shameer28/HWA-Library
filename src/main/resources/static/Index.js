@@ -7,6 +7,7 @@ const getLibrary = async () => {
     output.innerHTML = "";
     res.data.forEach(library => console.log(library));
     // renderLibrary(library));
+
 }
 
 const renderLibrary = ({ name }) => {

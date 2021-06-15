@@ -3,7 +3,7 @@
 const output = document.getElementById("output");
 
 const readAll = async () => {
-    const res = await axios.get("/books/create");
+    const res = await axios.get("/books");
     output.innerHTML = "";
     res.data.forEach(book => renderBooks(book));
 }
@@ -20,19 +20,14 @@ const renderBooks = ({ bookID, name, author }) => {
     cardBody.className = "card-body";
     card.appendChild(cardBody);
 
-    const makeText = document.createElement("p");
-    makeText.className = "card-text";
-    makeText.innerText = `bookID: ${bookID}`;
-    cardBody.appendChild(makeText);
-
     const modelText = document.createElement("p");
     modelText.className = "card-text";
-    modelText.innerText = `name: ${name}`;
+    modelText.innerText = `Book Name: ${name}`;
     cardBody.appendChild(modelText);
 
     const colourText = document.createElement("p");
     colourText.className = "card-text";
-    colourText.innerText = `author: ${author}`;
+    colourText.innerText = `Author: ${author}`;
     cardBody.appendChild(colourText);
 
     const cardFooter = document.createElement("div");
@@ -43,12 +38,75 @@ const renderBooks = ({ bookID, name, author }) => {
     deleteButton.innerText = "Delete";
     deleteButton.className = "card-link";
     deleteButton.addEventListener("click", function () {
-        // deleteCar(id);
+        removeBooks(bookID);
     });
     cardFooter.appendChild(deleteButton);
 
+    const updateButton = document.createElement("a");
+    updateButton.innerText = "Update";
+    updateButton.className = "card-link";
+    updateButton.addEventListener("click", function () {
+        document.getElementById("updateform").style.display = "inline";
+        document.getElementById("updateform").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const book = {
+                name: this.name.value,
+                author: this.author.value,
+                library: {
+                    libID: 1,
+                    name: "Birch Library"
+                }
+
+            }
+            axios.put(`/books/update/${bookID}`, book)
+                .then(response => {
+                    readAll();
+                    this.reset();
+                    document.getElementById("updateform").style.display = "none";
+                });
+
+
+        });
+
+
+
+
+        // removeBooks(bookID);
+
+    });
+    cardFooter.appendChild(updateButton);
+
     output.appendChild(column);
 }
+const removeBooks = async (bookID) => {
+    const res = await axios.delete(`/books/remove/${bookID}`);
+    readAll();
+}
+
+document.getElementById("libform").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    console.log(this.name.value);
+    console.log(this.author.value);
+
+    const book = {
+        name: this.name.value,
+        author: this.author.value,
+        library: {
+            libID: 1,
+            name: "Birch Library"
+        }
+
+    }
+    console.log(book);
+    axios.post("/books/create", book)
+        .then(response => {
+            readAll();
+            this.reset();
+        });
+});
+
 
 readAll();
+
 

@@ -115,3 +115,13 @@ body {
      .img1{
          width: 100%;
      }
+     #output{
+            padding: 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;   
+     }
+
+     #updateform{
+         display: none;
+     }
