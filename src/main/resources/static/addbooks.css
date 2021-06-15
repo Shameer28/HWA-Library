@@ -1,0 +1,117 @@
+body {
+            
+            background-color: aliceblue
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #row1 {
+            background-color: white;
+        }
+
+        b {
+            color: black;
+        }
+
+        .container {
+            padding: 1rem;
+            width: 100%;
+           
+        }
+
+        .container1 {
+            
+            width: 100%;
+            
+        }
+
+        .container2 {
+            padding: 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        
+            
+        }
+
+        .nav-link {
+            vertical-align: middle;
+        }
+
+        .logo {
+            width: 55px;
+        }
+
+        section {
+            text-align: center;
+           
+            
+        }
+
+        p {
+            text-align: justify;
+            padding: 1rem;
+        }
+
+        div.title {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        footer {
+            text-align: center;
+            font-style: italic;
+        }
+
+        .button {
+            background-color: #006eff;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-style: italic;
+            margin: 4px 2px;
+            
+            cursor: pointer;
+        }
+
+        #head1 {
+            font-style: italic;
+        }
+
+        #legend {
+            font-style: italic;
+        }
+
+        option {
+            width: 40px;
+
+        }
+
+        section.img1 {
+            padding: 1rem;
+            object-fit: cover;
+            overflow: hidden;
+            
+        }
+
+        .nav-link-container{
+            display: flex;
+            justify-content: center;
+            
+        }
+
+         .footer1{
+            padding: 20px;
+            background-color: white;
+     }
+     .img1{
+         width: 100%;
+     }

@@ -5,99 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Library System</title>
+    <title>Add Books</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="addbooks.css" rel="stylesheet">
+    <script src="addbooks.js"></script>
 </head>
-<style>
-    body {
-        /* background-color: blanchedalmond; */
-        background-color: antiquewhite
-    }
 
-    * {
-        box-sizing: border-box;
-    }
-
-    #row1 {
-        background-color: black;
-    }
-
-    #b1 {
-        color: white;
-    }
-
-    section.container1 {
-        padding: 1rem;
-        width: 70%;
-        margin-left: 15%;
-    }
-
-
-    .nav-link {
-        vertical-align: middle;
-    }
-
-    .logo {
-        width: 55px;
-    }
-
-    section {
-        text-align: center;
-        padding: .1rem;
-        margin: .5rem;
-    }
-
-    p {
-        text-align: justify;
-        padding: 1rem;
-    }
-
-    div.title {
-        display: flex;
-        justify-content: center;
-
-    }
-
-    footer {
-        text-align: center;
-        font-style: italic;
-    }
-
-    .button {
-        background-color: #006eff;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        padding: 10px 30px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        font-style: italic;
-        margin: 4px 2px;
-        margin-left: 75px;
-        cursor: pointer;
-    }
-
-    #name1 {
-        font-style: italic;
-    }
-
-    #head1 {
-        font-style: italic;
-    }
-
-    #legend {
-        font-style: italic;
-    }
-
-    option {
-        width: 40px;
-
-    }
-</style>
 </head>
 
 <body>
@@ -113,8 +28,9 @@
                             class="logo"></a>
                 </div>
 
-                <div id="col1" class="col-1">
-                    <a href="index.html" class="nav-link"><b id="b1">Home</b></a>
+                <div class="col-2 nav-link-container">
+                    <a href="index.html" class="nav-link"><b>Home</b></a>
+                    <a href="index.html" class="nav-link"><b>About Us</b></a>
                 </div>
             </div>
 
@@ -142,17 +58,19 @@
 
 
 
+
                     </fieldset>
                     <button class="button" type="button">Add Book</button>
-
-            </div>
+        </section>
+        <section>
+            <div class="output">
+                <!-- Books goes here -->
             </div>
         </section>
-
     </main>
 
 </body>
-<footer>
+<footer class="footer1">
     <b id="b2">&copy; Shameer QA 2021</b>
 </footer>
 
