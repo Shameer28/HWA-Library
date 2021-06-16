@@ -2,15 +2,13 @@
 
 const output = document.getElementById("output");
 
-const getLibrary = async () => {
+const readAll = async () => {
     const res = await axios.get("/library");
     output.innerHTML = "";
-    res.data.forEach(library => console.log(library));
-    // renderLibrary(library));
-
+    res.data.forEach(library => renderLibrary(library));
 }
 
-const renderLibrary = ({ name }) => {
+const renderLibrary = ({ libID, name, }) => {
     const column = document.createElement("div");
     column.className = "col";
 
@@ -22,10 +20,10 @@ const renderLibrary = ({ name }) => {
     cardBody.className = "card-body";
     card.appendChild(cardBody);
 
-    const makeText = document.createElement("p");
-    makeText.className = "card-text";
-    makeText.innerText = `Name: ${name}`;
-    cardBody.appendChild(makeText);
+    const modelText = document.createElement("p");
+    modelText.className = "card-text";
+    modelText.innerText = `Library Name: ${name}`;
+    cardBody.appendChild(modelText);
 
     const cardFooter = document.createElement("div");
     cardFooter.className = "card-footer";
@@ -35,36 +33,65 @@ const renderLibrary = ({ name }) => {
     deleteButton.innerText = "Delete";
     deleteButton.className = "card-link";
     deleteButton.addEventListener("click", function () {
-        deleteCar(id);
+        removeLibrary(libID);
     });
     cardFooter.appendChild(deleteButton);
+
+    //     // Update Functionality
+    const updateButton = document.createElement("a");
+    updateButton.innerText = "Update";
+    updateButton.className = "card-link";
+    updateButton.addEventListener("click", function () {
+        document.getElementById("updateform1").style.display = "inline";
+        document.getElementById("updateform1").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const library = {
+                name: this.name.value
+
+            }
+            axios.put(`/library/update/${libID}`, library)
+                .then(response => {
+                    readAll();
+                    this.reset();
+                    document.getElementById("updateform1").style.display = "none";
+                });
+
+
+        });
+
+
+    });
+    cardFooter.appendChild(updateButton);
 
     output.appendChild(column);
 }
 
-getLibrary();
+// Delete Functionality
+const removeLibrary = async (libID) => {
+    const res = await axios.delete(`/library/remove/${libID}`);
+    readAll();
+}
+
+// Create Functionality
+document.getElementById("libform").addEventListener("submit", function (event) {
+    event.preventDefault();
 
 
+    const lib = {
 
-// document.getElementById("createForm").addEventListener("submit", function (event) {
-//     event.preventDefault();
+        name: this.newname.value
 
-//     const data = {
-//         make: this.make.value,
-//         model: this.Model.value,
-//         colour: this.Colour.value
-//     }
+    }
 
-//     axios.post("/cars/create", data)
-//         .then(res => {
-//             getCars();
-//             this.reset();
-//             this.make.focus();
-//         }).catch(err => console.log(err));
 
-//     console.log(this);
-// });
+    console.log(lib);
+    axios.post("/library/create", lib)
+        .then(response => {
+            readAll();
+            this.reset();
+        });
+});
 
-// const deleteCar = async (id) => {
-//     const res = await axios.delete(`/cars/remove/${id}`);
-//     getCars();
+
+readAll();
+
