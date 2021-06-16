@@ -99,13 +99,11 @@ document.getElementById("libform").addEventListener("submit", function (event) {
 
     }
 
-
-
     axios.post("/library/create", lib)
         .then(response => {
             readAll();
             this.reset();
-        });
+        }).catch(err => console.log(err));
 });
 
 const navigate = (id, name) => {

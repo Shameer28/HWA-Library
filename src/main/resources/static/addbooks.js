@@ -68,7 +68,7 @@ const renderBooks = ({ bookID, name, author }) => {
                     readAll();
                     this.reset();
                     document.getElementById("updateform").style.display = "none";
-                });
+                }).catch(err => console.log(err));
 
 
         });
@@ -105,7 +105,7 @@ document.getElementById("libform").addEventListener("submit", function (event) {
         .then(response => {
             readAll();
             this.reset();
-        });
+        }).catch(err => console.log(err));
 });
 
 
