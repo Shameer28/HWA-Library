@@ -1,6 +1,6 @@
 # HWA-LIBRARY (HWA)
 
-This is a HTML/Javascript Library Website incorporated with a Java backend that an end user can interact with via a website(HTML pages).
+This is a full stack web application incorporated with a Java (backend), HTML, CSS, JavaScript (frontend) that an end user can interact with via a web(HTML pages).
 It utilises a MySQL database via a cloud platform instance containing the following entities/tables:
 
 - Library
