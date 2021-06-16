@@ -1,11 +1,14 @@
 'use strict';
+const currtlibID = new URLSearchParams(window.location.search).get("id");
+const currtlibName = new URLSearchParams(window.location.search).get("name");
 
 const output = document.getElementById("output");
 
 const readAll = async () => {
-    const res = await axios.get("/books");
+    const res = await axios.get(`/library/findId/${currtlibID}`);
     output.innerHTML = "";
-    res.data.forEach(book => renderBooks(book));
+    res.data.book.forEach(book => renderBooks(book));
+
 }
 
 const renderBooks = ({ bookID, name, author }) => {
@@ -55,8 +58,8 @@ const renderBooks = ({ bookID, name, author }) => {
                 name: this.name.value,
                 author: this.author.value,
                 library: {
-                    libID: 1,
-                    name: "Birch Library"
+                    libID: currtlibID,
+                    name: currtlibName
                 }
 
             }
@@ -92,12 +95,12 @@ document.getElementById("libform").addEventListener("submit", function (event) {
         name: this.name.value,
         author: this.author.value,
         library: {
-            libID: 1,
-            name: "Birch Library"
+            libID: currtlibID,
+            name: currtlibName
         }
 
     }
-    console.log(book);
+
     axios.post("/books/create", book)
         .then(response => {
             readAll();

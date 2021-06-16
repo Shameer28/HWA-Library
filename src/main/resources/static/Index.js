@@ -8,7 +8,7 @@ const readAll = async () => {
     res.data.forEach(library => renderLibrary(library));
 }
 
-const renderLibrary = ({ libID, name, }) => {
+const renderLibrary = ({ libID, name, book }) => {
     const column = document.createElement("div");
     column.className = "col";
 
@@ -25,9 +25,25 @@ const renderLibrary = ({ libID, name, }) => {
     modelText.innerText = `Library Name: ${name}`;
     cardBody.appendChild(modelText);
 
+    const bookText = document.createElement("p");
+    bookText.className = "card-text";
+    bookText.innerText = `Number of Books: ${numBooks(book)}`;
+    cardBody.appendChild(bookText);
+
     const cardFooter = document.createElement("div");
     cardFooter.className = "card-footer";
     card.appendChild(cardFooter);
+
+    const bookButton = document.createElement("a");
+    bookButton.innerText = "Add Books";
+    bookButton.className = "card-link";
+    bookButton.addEventListener("click", function () {
+
+        navigate(libID, name);
+
+    });
+
+    cardFooter.appendChild(bookButton);
 
     const deleteButton = document.createElement("a");
     deleteButton.innerText = "Delete";
@@ -37,7 +53,7 @@ const renderLibrary = ({ libID, name, }) => {
     });
     cardFooter.appendChild(deleteButton);
 
-    //     // Update Functionality
+    // Update Functionality
     const updateButton = document.createElement("a");
     updateButton.innerText = "Update";
     updateButton.className = "card-link";
@@ -84,13 +100,29 @@ document.getElementById("libform").addEventListener("submit", function (event) {
     }
 
 
-    console.log(lib);
+
     axios.post("/library/create", lib)
         .then(response => {
             readAll();
             this.reset();
         });
 });
+
+const navigate = (id, name) => {
+
+    window.location.href = `./addbooks.html?id=${id}&name=${name}`;
+
+}
+
+const numBooks = (books) => {
+    let count = 0;
+    for (let i = 0; i < books.length; i++) {
+        count++
+    }
+    return count;
+}
+
+
 
 
 readAll();

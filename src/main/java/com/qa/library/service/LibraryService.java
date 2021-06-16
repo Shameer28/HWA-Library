@@ -2,7 +2,6 @@ package com.qa.library.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -52,9 +51,8 @@ public class LibraryService {
 		
 	
 	// FUNCTION TO FIND BY ID
-	public LibraryDTO findLibrary(Integer libID) {
-		Optional<Library> optionalLib = this.repo.findById(libID);
-		Library found = optionalLib.orElseThrow(() -> new EntityNotFoundException());
+	public LibraryDTO find(Integer libID) {
+		Library found = this.repo.findById(libID).orElseThrow(() -> new EntityNotFoundException());
 			return this.mapper.mapToDTO(found);		
 	}
 	
@@ -69,7 +67,7 @@ public class LibraryService {
 			
 		return this.mapper.mapToDTO(updated); // RETURNS THE UPDATED DATA
 	}
-		
+	
 		
 	// FUNCTION TO DELETE LIBRARY BY ID
 	public boolean deleteLibrary (Integer libID) {
