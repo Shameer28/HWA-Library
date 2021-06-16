@@ -125,3 +125,21 @@ body {
      #updateform{
          display: none;
      }
+     
+     .card-body {
+         background-color:white ;
+        justify-content: center; 
+     }
+
+     .card-text{
+         font-weight: bold;
+     }
+
+     .card-link{
+         font-weight: bold;
+         color: black;
+
+     }
+     .card-footer {
+         background-color: skyblue;
+     }

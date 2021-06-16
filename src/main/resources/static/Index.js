@@ -2,15 +2,13 @@
 
 const output = document.getElementById("output");
 
-const getLibrary = async () => {
+const readAll = async () => {
     const res = await axios.get("/library");
     output.innerHTML = "";
-    res.data.forEach(library => console.log(library));
-    // renderLibrary(library));
-
+    res.data.forEach(library => renderLibrary(library));
 }
 
-const renderLibrary = ({ name }) => {
+const renderLibrary = ({ libID, name, book }) => {
     const column = document.createElement("div");
     column.className = "col";
 
@@ -22,49 +20,110 @@ const renderLibrary = ({ name }) => {
     cardBody.className = "card-body";
     card.appendChild(cardBody);
 
-    const makeText = document.createElement("p");
-    makeText.className = "card-text";
-    makeText.innerText = `Name: ${name}`;
-    cardBody.appendChild(makeText);
+    const modelText = document.createElement("p");
+    modelText.className = "card-text";
+    modelText.innerText = `Library Name: ${name}`;
+    cardBody.appendChild(modelText);
+
+    const bookText = document.createElement("p");
+    bookText.className = "card-text";
+    bookText.innerText = `Number of Books: ${numBooks(book)}`;
+    cardBody.appendChild(bookText);
 
     const cardFooter = document.createElement("div");
     cardFooter.className = "card-footer";
     card.appendChild(cardFooter);
 
+    const bookButton = document.createElement("a");
+    bookButton.innerText = "Add Books";
+    bookButton.className = "card-link";
+    bookButton.addEventListener("click", function () {
+
+        navigate(libID, name);
+
+    });
+
+    cardFooter.appendChild(bookButton);
+
     const deleteButton = document.createElement("a");
     deleteButton.innerText = "Delete";
     deleteButton.className = "card-link";
     deleteButton.addEventListener("click", function () {
-        deleteCar(id);
+        removeLibrary(libID);
     });
     cardFooter.appendChild(deleteButton);
+
+    // Update Functionality
+    const updateButton = document.createElement("a");
+    updateButton.innerText = "Update";
+    updateButton.className = "card-link";
+    updateButton.addEventListener("click", function () {
+        document.getElementById("updateform1").style.display = "inline";
+        document.getElementById("updateform1").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const library = {
+                name: this.name.value
+
+            }
+            axios.put(`/library/update/${libID}`, library)
+                .then(response => {
+                    readAll();
+                    this.reset();
+                    document.getElementById("updateform1").style.display = "none";
+                });
+
+
+        });
+
+
+    });
+    cardFooter.appendChild(updateButton);
 
     output.appendChild(column);
 }
 
-getLibrary();
+// Delete Functionality
+const removeLibrary = async (libID) => {
+    const res = await axios.delete(`/library/remove/${libID}`);
+    readAll();
+}
+
+// Create Functionality
+document.getElementById("libform").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+
+    const lib = {
+
+        name: this.newname.value
+
+    }
 
 
 
-// document.getElementById("createForm").addEventListener("submit", function (event) {
-//     event.preventDefault();
+    axios.post("/library/create", lib)
+        .then(response => {
+            readAll();
+            this.reset();
+        });
+});
 
-//     const data = {
-//         make: this.make.value,
-//         model: this.Model.value,
-//         colour: this.Colour.value
-//     }
+const navigate = (id, name) => {
 
-//     axios.post("/cars/create", data)
-//         .then(res => {
-//             getCars();
-//             this.reset();
-//             this.make.focus();
-//         }).catch(err => console.log(err));
+    window.location.href = `./addbooks.html?id=${id}&name=${name}`;
 
-//     console.log(this);
-// });
+}
 
-// const deleteCar = async (id) => {
-//     const res = await axios.delete(`/cars/remove/${id}`);
-//     getCars();
+const numBooks = (books) => {
+    let count = 0;
+    for (let i = 0; i < books.length; i++) {
+        count++
+    }
+    return count;
+}
+
+
+
+
+readAll();
+

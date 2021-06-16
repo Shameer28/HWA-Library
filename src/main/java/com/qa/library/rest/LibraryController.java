@@ -42,7 +42,7 @@ public class LibraryController {
 	
 	@GetMapping("/library/findId/{libID}")
 	public LibraryDTO findLibrary(@PathVariable Integer libID) {
-		return this.service.findLibrary(libID);
+		return this.service.find(libID);
 	}
 	
 	

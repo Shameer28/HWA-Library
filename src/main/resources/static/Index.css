@@ -115,3 +115,32 @@ body {
         .img1{
          width: 100%;
      }
+
+     #output{
+            padding: 5rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;   
+     }
+
+      #updateform1{
+         display: none;
+     }
+
+     .card-body {
+         background-color:white ;
+        justify-content: center; 
+     }
+
+     .card-text{
+         font-weight: bold;
+     }
+
+     .card-link{
+         font-weight: bold;
+         color: black;
+
+     }
+     .card-footer {
+         background-color: skyblue;
+     }
