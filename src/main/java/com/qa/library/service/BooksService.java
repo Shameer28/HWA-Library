@@ -2,7 +2,6 @@ package com.qa.library.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -51,13 +50,15 @@ public class BooksService {
 		return dtos;
 	}
 	
-	
+	//=====================================For Further Development======================================	
 	//	FUNCTION TO FIND BY ID
-	public BooksDTO findBook(Integer bookID) {
-		Optional<Book> optionalBook = this.repo.findById(bookID);
-		Book found =  optionalBook.orElseThrow(() -> new EntityNotFoundException());
-			return this.mapper.mapToDTO(found);			
-	}
+//	public BooksDTO findBook(Integer bookID) {
+//		Optional<Book> optionalBook = this.repo.findById(bookID);
+//		Book found =  optionalBook.orElseThrow(() -> new EntityNotFoundException());
+//			return this.mapper.mapToDTO(found);			
+//	}
+	//=====================================For Further Development======================================
+	
 	
 	//	FUNCTION UPDATE BOOKS
 	public BooksDTO updateBook(Integer bookID, Book book) {
