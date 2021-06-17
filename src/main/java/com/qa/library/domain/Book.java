@@ -35,8 +35,16 @@ public class Book {
 	public Book() {
 		super();
 	}
+
 	
-	
+	//CONSTRUCTOR
+	public Book(String name, String author) {
+		super();
+		this.name = name;
+		this.author = author;
+	}
+
+
 	//	CONSTRUCTOR
 	public Book(String name, String author, Library library) {
 		super();
@@ -47,7 +55,7 @@ public class Book {
 
 	
 	//	CONSTRUCTOR
-	public Book(Integer bookID, String name, String author, Library library) {
+	public Book(Integer bookID, String name, String author) {
 		super();
 		this.bookID = bookID;
 		this.name = name;

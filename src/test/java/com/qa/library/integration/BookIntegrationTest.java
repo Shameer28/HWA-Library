@@ -47,13 +47,13 @@ public class BookIntegrationTest {
 	//CREATE
 	@Test
 	void testSaveBook() throws Exception {
-		Book testBook = new Book("Macbeth", "Shakesphere", null);
+		Book testBook = new Book("Macbeth", "Shakesphere");
 		String testBookAsJSON = this.mapper.writeValueAsString(testBook);
 
-		Book testSavedBook = new Book("Macbeth", "Shakesphere", null);
+		Book testSavedBook = new Book("Macbeth", "Shakesphere");
 		testSavedBook.setBookID(2);
 		String testSavedBookAsJSON = this.mapper.writeValueAsString(testSavedBook);
-
+ 
 		RequestBuilder mockRequest = post("/books/create").content(testBookAsJSON)
 				.contentType(MediaType.APPLICATION_JSON);
 
@@ -63,13 +63,13 @@ public class BookIntegrationTest {
 
 		this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
 
-	}
+	}  
 	
 	
 	//READ
 	@Test
 	void testReadAll() throws Exception {
-		Book testBook = new Book("Macbeth", "Shakesphere ", null);
+		Book testBook = new Book("Macbeth", "Shakesphere");
 		List<Book> testBooks = List.of(testBook);
 		String testBooksAsJSONArray = this.mapper.writeValueAsString(testBooks);
 
