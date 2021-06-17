@@ -25,6 +25,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.library.domain.Book;
+import com.qa.library.dto.BooksDTO;
 import com.qa.library.repo.BooksRepo;
 
 @SpringBootTest (webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -47,45 +48,50 @@ public class BookIntegrationTest {
 	//CREATE
 	@Test
 	void testSaveBook() throws Exception {
-		Book testBook = new Book("Macbeth", "Shakesphere", null);
+		Book testBook = new Book("Macbeth", "Shakesphere");
 		String testBookAsJSON = this.mapper.writeValueAsString(testBook);
-
-		Book testSavedBook = new Book("Macbeth", "Shakesphere", null);
-		testSavedBook.setBookID(2);
-		String testSavedBookAsJSON = this.mapper.writeValueAsString(testSavedBook);
-
+		
+		BooksDTO testBookDTO = new BooksDTO(2,"Macbeth", "Shakesphere");
+		String testDTOAsJSON = this.mapper.writeValueAsString(testBookDTO);
+		
+		
 		RequestBuilder mockRequest = post("/books/create").content(testBookAsJSON)
 				.contentType(MediaType.APPLICATION_JSON);
 
 		ResultMatcher checkStatus = status().isOk();
 
-		ResultMatcher checkBody = content().json(testSavedBookAsJSON);
+		ResultMatcher checkBody = content().json(testDTOAsJSON);
 
 		this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
-
-	}
+  
+	}  
 	
 	
 	//READ
 	@Test
 	void testReadAll() throws Exception {
-		Book testBook = new Book("Macbeth", "Shakesphere ", null);
-		List<Book> testBooks = List.of(testBook);
+		BooksDTO testBook = new BooksDTO(1, "Romeo & Julliet", "JK Rowling");
+		List<BooksDTO> testBooks = List.of(testBook);
 		String testBooksAsJSONArray = this.mapper.writeValueAsString(testBooks);
 
 		this.mvc.perform(get("/books")).andExpect(status().isOk()).andExpect(content().json(testBooksAsJSONArray));
-
-		}
+		
+		}  
 
 	
 	//UPDATE
 	@Test
 	void testUpdateBook() throws Exception{
-		 Book updateBook = new Book();
+		 Book updateBook = new Book(1 ,"Romeo & Julliet", "JK Rowling");
 	        String updateBookAsJSON = this.mapper.writeValueAsString(updateBook);
-	        this.mvc.perform(put("/update/1"))
-	        .andExpect(status().isOk())
-	        .andExpect(content().json(updateBookAsJSON));
+	        
+	        BooksDTO bookDTO = new BooksDTO(1, "Romeo & Julliet", "JK Rowling");
+	        String dtoAsJSON = this.mapper.writeValueAsString(bookDTO);
+	        
+	        
+	        
+	        this.mvc.perform(put("/books/update/1").content(updateBookAsJSON).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().json(dtoAsJSON));
+	        
 	    }
 		
 	

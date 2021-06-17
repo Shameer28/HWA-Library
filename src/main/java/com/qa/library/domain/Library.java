@@ -25,6 +25,24 @@ public class Library {
 	
 	private List<Book> book = new ArrayList<>();;
 	
+	
+	//CONSTRUCTOR
+	public Library(Integer libID, String name) {
+		super();
+		this.libID = libID;
+		this.name = name;
+	}
+
+	//CONSTRUCTOR
+	public Library(String name) {
+		super();
+		this.name = name;
+	}
+	
+	public Library() {
+		super();
+		
+	}
 
 	//	GETTERS & SETTERS
 	public Integer getLibID() {
@@ -49,6 +67,34 @@ public class Library {
 
 	public void setBook(List<Book> book) {
 		this.book = book;
+	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Library other = (Library) obj;
+		if (book == null) {
+			if (other.book != null)
+				return false;
+		} else if (!book.equals(other.book))
+			return false;
+		if (libID == null) {
+			if (other.libID != null)
+				return false;
+		} else if (!libID.equals(other.libID))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 
 		

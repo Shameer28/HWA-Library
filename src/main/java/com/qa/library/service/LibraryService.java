@@ -18,7 +18,7 @@ public class LibraryService {
 
 	private LibraryRepo repo;
 	
-	private LibraryMapper mapper;
+	public LibraryMapper mapper;
 	
 	@Autowired
 	public LibraryService(LibraryRepo repo, LibraryMapper mapper) {
