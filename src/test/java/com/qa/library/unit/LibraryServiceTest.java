@@ -56,6 +56,19 @@ public class LibraryServiceTest {
 		assertThat(this.service.readAll()).isEqualTo(totalLibraries);
 	}
 	
+	@Test
+	void testFind() {
+		// GIVEN
+		Library library = new Library(1, "QA");
+		LibraryDTO dtos = new LibraryDTO(1, "QA", new ArrayList<>());  
+		
+		Mockito.when(this.repo.findById(1)).thenReturn(Optional.of(library));
+		
+		assertThat(this.service.find(1)).isEqualTo(dtos);
+	}	
+		
+		
+	
 	
 	@Test
 	void testUpdateLibrary() {
