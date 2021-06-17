@@ -25,12 +25,6 @@ public class Book {
 
 	
 	
-	@Override
-	public String toString() {
-		return "Book [bookID= " + bookID + ", name= " + name + ", author= " + author + ", library= " + library + "]";
-	}
-	
-	
 	//	CONSTRUCTOR CRUD
 	public Book() {
 		super();
@@ -44,14 +38,6 @@ public class Book {
 		this.author = author;
 	}
 
-
-	//	CONSTRUCTOR
-	public Book(String name, String author, Library library) {
-		super();
-		this.name = name;
-		this.author = author;
-		this.library = library;
-	}
 
 	
 	//	CONSTRUCTOR
@@ -97,17 +83,6 @@ public class Book {
 		this.library = library;
 	}
 
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((bookID == null) ? 0 : bookID.hashCode());
-		result = prime * result + ((library == null) ? 0 : library.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
 
 
 	@Override

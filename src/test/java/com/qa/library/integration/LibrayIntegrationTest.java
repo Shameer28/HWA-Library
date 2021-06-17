@@ -90,11 +90,12 @@ public class LibrayIntegrationTest {
 	@Test
 	void testFindLibrary() throws Exception {
 		
-		LibraryDTO testLibrary = new LibraryDTO(1, "Birch Library");
+		BooksDTO testBook = new BooksDTO(1, "Romeo & Julliet", "JK Rowling");
+		List<BooksDTO> testBooks = List.of(testBook);
 		
-		List<LibraryDTO> testLibrarys = List.of(testLibrary);
+		LibraryDTO testLibrary = new LibraryDTO(1, "Birch Library", testBooks);
 		
-		String testLibrarysAsJSON = this.mapper.writeValueAsString(testLibrarys);
+		String testLibrarysAsJSON = this.mapper.writeValueAsString(testLibrary);
  
 		this.mvc.perform(get("/library/findId/1")).andExpect(status().isOk()).andExpect(content().json(testLibrarysAsJSON));
 		
@@ -104,18 +105,22 @@ public class LibrayIntegrationTest {
 	//UPDATE
 	@Test
 	void testUpdateLibrary() throws Exception {
+		
+		BooksDTO testBook = new BooksDTO(1, "Romeo & Julliet", "JK Rowling");
+		List<BooksDTO> testBooks = List.of(testBook);
+		
 		Library testLibrary = new Library("Birch Library");
 		String testLibraryAsJSON = this.mapper.writeValueAsString(testLibrary);
  
-		LibraryDTO testSavedLibrary = new LibraryDTO(1, "Birch Library");
-		String testSavedLibraryAsJSON = this.mapper.writeValueAsString(testSavedLibrary);
+		LibraryDTO testSavedLibrary = new LibraryDTO(1, "Birch Library", testBooks);
+		String testSavedLibraryAsJSONArray = this.mapper.writeValueAsString(testSavedLibrary);
  
 		RequestBuilder mockRequest = put("/library/update/1").content(testLibraryAsJSON)
-				.contentType(MediaType.APPLICATION_JSON);
+				.contentType(MediaType.APPLICATION_JSON); 
 
-		ResultMatcher checkStatus = status().isOk();
+		ResultMatcher checkStatus = status().isOk(); 
 
-		ResultMatcher checkBody = content().json(testSavedLibraryAsJSON);
+		ResultMatcher checkBody = content().json(testSavedLibraryAsJSONArray);
 
 		this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);	
 		
