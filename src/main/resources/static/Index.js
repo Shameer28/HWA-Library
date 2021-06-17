@@ -45,6 +45,7 @@ const renderLibrary = ({ libID, name, book }) => {
 
     cardFooter.appendChild(bookButton);
 
+    // Delete Functionality
     const deleteButton = document.createElement("a");
     deleteButton.innerText = "Delete";
     deleteButton.className = "card-link";
