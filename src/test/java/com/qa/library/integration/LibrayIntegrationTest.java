@@ -25,12 +25,13 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qa.library.LibraryProjectApplication;
 import com.qa.library.domain.Library;
 import com.qa.library.dto.BooksDTO;
 import com.qa.library.dto.LibraryDTO;
 import com.qa.library.repo.LibraryRepo;
 
-@SpringBootTest (webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = LibraryProjectApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:Library-schema.sql","classpath:Library-data.sql"},
 		executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
