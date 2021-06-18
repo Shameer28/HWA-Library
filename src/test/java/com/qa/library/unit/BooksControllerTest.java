@@ -8,15 +8,17 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
+import com.qa.library.LibraryProjectApplication;
 import com.qa.library.domain.Book;
 import com.qa.library.dto.BooksDTO;
 import com.qa.library.rest.BooksController;
 import com.qa.library.service.BooksService;
 
-@SpringBootTest
+@SpringBootTest(classes = LibraryProjectApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 public class BooksControllerTest {
 	
