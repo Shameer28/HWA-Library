@@ -1,7 +1,5 @@
 package com.qa.library.dto;
 
-import com.qa.library.domain.Library;
-
 public class BooksDTO {
 	
 	private Integer bookID;
@@ -29,22 +27,22 @@ public class BooksDTO {
 	}
 	
 	
-	//	CONSTRUCTOR
-	public BooksDTO(String name, String author, Library library) {
-		super();
-		this.name = name;
-		this.author = author;
-	}
-
-	
-	//	CONSTRUCTOR
-	public BooksDTO(Integer bookID, String name, String author, Library library) {
-		super();
-		this.bookID = bookID;
-		this.name = name;
-		this.author = author;
-	
-	}
+//	//	CONSTRUCTOR
+//	public BooksDTO(String name, String author, Library library) {
+//		super();
+//		this.name = name;
+//		this.author = author;
+//	}
+//
+//	
+//	//	CONSTRUCTOR
+//	public BooksDTO(Integer bookID, String name, String author, Library library) {
+//		super();
+//		this.bookID = bookID;
+//		this.name = name;
+//		this.author = author;
+//	
+//	}
 
 	
 	//	GETTERS & SETTERS
@@ -73,15 +71,15 @@ public class BooksDTO {
 	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((bookID == null) ? 0 : bookID.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((author == null) ? 0 : author.hashCode());
+//		result = prime * result + ((bookID == null) ? 0 : bookID.hashCode());
+//		result = prime * result + ((name == null) ? 0 : name.hashCode());
+//		return result;
+//	}
 
 
 	@Override

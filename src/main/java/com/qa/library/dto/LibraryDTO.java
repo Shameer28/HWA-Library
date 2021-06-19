@@ -25,11 +25,11 @@ public class LibraryDTO {
 	}
 
 
-	public LibraryDTO(String name, List<BooksDTO> book) {
-		super();
-		this.name = name;
-		this.book = book;
-	}
+//	public LibraryDTO(String name, List<BooksDTO> book) {
+//		super();
+//		this.name = name;
+//		this.book = book;
+//	}
 
 
 	public LibraryDTO(Integer libID, String name, List<BooksDTO> book) {
@@ -70,15 +70,15 @@ public class LibraryDTO {
 	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((book == null) ? 0 : book.hashCode());
-		result = prime * result + ((libID == null) ? 0 : libID.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((book == null) ? 0 : book.hashCode());
+//		result = prime * result + ((libID == null) ? 0 : libID.hashCode());
+//		result = prime * result + ((name == null) ? 0 : name.hashCode());
+//		return result;
+//	}
 
 
 	@Override
