@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,8 +32,8 @@ public class AddBooksPageTest {
 	public static void setup() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
 		driver = new ChromeDriver();
-//	        driver.manage().window().setSize(new Dimension(1366, 768));
-		driver.manage().window().maximize();
+	    driver.manage().window().setSize(new Dimension(1366, 4000));
+
 	}
 
 	@Test

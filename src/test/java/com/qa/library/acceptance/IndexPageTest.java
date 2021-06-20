@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,8 +32,8 @@ public class IndexPageTest {
     public static void setup() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
-//        driver.manage().window().setSize(new Dimension(1366, 768));
-        driver.manage().window().maximize(); 
+        driver.manage().window().setSize(new Dimension(1366, 4000));
+       
 
     } 
 
@@ -93,21 +94,22 @@ public class IndexPageTest {
     	
     }
     
-//    @Test
-//    public void testDelete() throws InterruptedException {
-//    	driver.get(URL);
-//    	Thread.sleep(5000);
-//    	
-////    	WebElement i = driver.findElement(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[1]/p[1]"));
-//    	
-//    	targ = driver.findElement(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[2]/a[2]"));
-//    	Thread.sleep(2000);
-//    	targ.click();
-//    	Thread.sleep(2000);
-//    	
-//    	
-////    	Assertions.assertEquals(false, i.isDisplayed());
-//    }
+    @Test
+    public void testDelete() throws InterruptedException {
+    	driver.get(URL);
+    	Thread.sleep(4000);
+    	
+    	WebElement deleteButton = driver.findElement(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[2]/a[2]"));
+       	Thread.sleep(2000);
+       	deleteButton.click();
+       	
+
+    	Thread.sleep(2000);
+    	
+    	Boolean isPresent = driver.findElements(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[1]/p[1]")).size() > 0;
+
+    	assertEquals(false, isPresent);
+    }
     
     @AfterAll
     public static void tearDown() {
