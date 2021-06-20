@@ -20,10 +20,10 @@ const renderLibrary = ({ libID, name, book }) => {
     cardBody.className = "card-body";
     card.appendChild(cardBody);
 
-    const modelText = document.createElement("p");
-    modelText.className = "card-text";
-    modelText.innerText = `Library Name: ${name}`;
-    cardBody.appendChild(modelText);
+    const nameText = document.createElement("p");
+    nameText.className = "card-text";
+    nameText.innerText = `Library Name: ${name}`;
+    cardBody.appendChild(nameText);
 
     const bookText = document.createElement("p");
     bookText.className = "card-text";
@@ -35,7 +35,7 @@ const renderLibrary = ({ libID, name, book }) => {
     card.appendChild(cardFooter);
 
     const bookButton = document.createElement("a");
-    bookButton.innerText = "Add Books";
+    bookButton.innerText = "Books";
     bookButton.className = "card-link";
     bookButton.addEventListener("click", function () {
 

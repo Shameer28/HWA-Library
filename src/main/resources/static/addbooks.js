@@ -23,15 +23,15 @@ const renderBooks = ({ bookID, name, author }) => {
     cardBody.className = "card-body";
     card.appendChild(cardBody);
 
-    const modelText = document.createElement("p");
-    modelText.className = "card-text";
-    modelText.innerText = `Book Name: ${name}`;
-    cardBody.appendChild(modelText);
+    const nameText = document.createElement("p");
+    nameText.className = "card-text";
+    nameText.innerText = `Book Name: ${name}`;
+    cardBody.appendChild(nameText);
 
-    const colourText = document.createElement("p");
-    colourText.className = "card-text";
-    colourText.innerText = `Author: ${author}`;
-    cardBody.appendChild(colourText);
+    const authorText = document.createElement("p");
+    authorText.className = "card-text";
+    authorText.innerText = `Author: ${author}`;
+    cardBody.appendChild(authorText);
 
     const cardFooter = document.createElement("div");
     cardFooter.className = "card-footer";
@@ -69,10 +69,7 @@ const renderBooks = ({ bookID, name, author }) => {
                     this.reset();
                     document.getElementById("updateform").style.display = "none";
                 }).catch(err => console.log(err));
-
-
         });
-
 
     });
     cardFooter.appendChild(updateButton);
@@ -89,7 +86,6 @@ const removeBooks = async (bookID) => {
 // Create Functionality
 document.getElementById("libform").addEventListener("submit", function (event) {
     event.preventDefault();
-
 
     const book = {
         name: this.name.value,
