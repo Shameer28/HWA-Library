@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,7 +27,7 @@ public class AddBooksPageTest {
 
 	private static WebDriver driver;
 	private static WebElement targ;
-	private static String URL = ("http://localhost:8080");
+	private static String URL = ("http://localhost:8080"); 
 
 	@BeforeAll
 	public static void setup() {
@@ -40,6 +41,12 @@ public class AddBooksPageTest {
 	public void testCreate() throws InterruptedException {
 		driver.get(URL);
 		Thread.sleep(3000);
+		         
+	    JavascriptExecutor jse = (JavascriptExecutor)driver;
+	    jse.executeScript("window.scrollBy(0,250)", ""); //FOR SCROLLING DOWN IN PAGE
+		
+	    Thread.sleep(2000);
+	    
 		WebElement i = driver.findElement(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[2]/a[1]"));
 		i.click();
 		 
@@ -65,6 +72,12 @@ public class AddBooksPageTest {
 	public void testRead() throws InterruptedException {
 		driver.get(URL);
 		Thread.sleep(3000);
+		
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+	    jse.executeScript("window.scrollBy(0,250)", ""); //FOR SCROLLING DOWN IN PAGE
+		
+	    Thread.sleep(2000);
+		
 	    WebElement i = driver.findElement(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[2]/a[1]"));
 		i.click();
 		 
@@ -81,6 +94,12 @@ public class AddBooksPageTest {
 	public void testUpdate() throws InterruptedException {
 		driver.get(URL);
 		Thread.sleep(3000);
+		
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+	    jse.executeScript("window.scrollBy(0,250)", ""); //FOR SCROLLING DOWN IN PAGE
+		
+	    Thread.sleep(2000);
+		
 		WebElement i = driver.findElement(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[2]/a[1]"));
 		i.click();
 		
@@ -107,9 +126,28 @@ public class AddBooksPageTest {
 
 	@Test
 	public void testDelete() throws InterruptedException {
+		driver.get(URL);
+		
+    	Thread.sleep(3000);
+    	
+    	JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("window.scrollBy(0,250)", ""); //FOR SCROLLING DOWN IN PAGE
+        
+        Thread.sleep(2000);
+        
+        WebElement addb  = driver.findElement(By.xpath("/html/body/main/section[3]/div/div[1]/div/div[2]/a[1]"));
+        addb.click();
+        
+        Thread.sleep(1000);
+        
+        WebElement delb = driver.findElement(By.xpath("/html/body/main/section[2]/div/div/div/div[2]/a[1]"));
+        delb.click();
+        
+        Thread.sleep(1000);
+        
+        Boolean isPresent = driver.findElements(By.xpath("/html/body/main/section[2]/div/div/div/div[1]/p[1]")).size() > 0;
 
-		
-		
+    	assertEquals(false, isPresent);
 	}
 
 	@AfterAll

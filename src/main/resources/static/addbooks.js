@@ -69,10 +69,7 @@ const renderBooks = ({ bookID, name, author }) => {
                     this.reset();
                     document.getElementById("updateform").style.display = "none";
                 }).catch(err => console.log(err));
-
-
         });
-
 
     });
     cardFooter.appendChild(updateButton);
@@ -89,7 +86,6 @@ const removeBooks = async (bookID) => {
 // Create Functionality
 document.getElementById("libform").addEventListener("submit", function (event) {
     event.preventDefault();
-
 
     const book = {
         name: this.name.value,

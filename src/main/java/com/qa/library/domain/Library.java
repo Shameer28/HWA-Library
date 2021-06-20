@@ -68,7 +68,16 @@ public class Library {
 	public void setBook(List<Book> book) {
 		this.book = book;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((book == null) ? 0 : book.hashCode());
+		result = prime * result + ((libID == null) ? 0 : libID.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -96,7 +105,6 @@ public class Library {
 			return false;
 		return true;
 	}
-
 		
 	
 }

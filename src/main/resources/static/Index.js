@@ -35,7 +35,7 @@ const renderLibrary = ({ libID, name, book }) => {
     card.appendChild(cardFooter);
 
     const bookButton = document.createElement("a");
-    bookButton.innerText = "Add Books";
+    bookButton.innerText = "Books";
     bookButton.className = "card-link";
     bookButton.addEventListener("click", function () {
 

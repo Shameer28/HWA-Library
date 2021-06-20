@@ -84,6 +84,17 @@ public class Book {
 	}
 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((bookID == null) ? 0 : bookID.hashCode());
+		result = prime * result + ((library == null) ? 0 : library.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -116,7 +127,6 @@ public class Book {
 			return false;
 		return true;
 	}
-	
 
 	
 }
