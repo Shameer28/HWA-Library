@@ -1,3 +1,4 @@
+81.3% Coverage
 # HWA-LIBRARY (HWA)
 
 This is a full stack web application incorporated with a Java (backend), HTML, CSS, JavaScript (frontend) that an end user can interact with via a web(HTML pages).
