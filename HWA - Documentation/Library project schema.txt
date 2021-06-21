@@ -1,0 +1,18 @@
+create database hwa;
+
+CREATE TABLE IF NOT EXISTS `Library` (
+  `libID` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`libID`));
+
+CREATE TABLE IF NOT EXISTS `Books` (
+  `bookID` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `author` VARCHAR(255) NOT NULL,
+  `libID` INT NOT NULL,
+  PRIMARY KEY (`bookID`),
+  CONSTRAINT `fk_libID`
+    FOREIGN KEY (`libID`)
+    REFERENCES `Library` (`libID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
